@@ -1,15 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  toggleTodo,
-  removeTodo,
-  markCompleted,
-  markIncomplete,
-  editTodo, // Import the editTodo action
-} from '../redux/actions';
+import { editTodo, removeTodo, toggleTodo, markCompleted, markIncomplete } from '../redux/actions';
 import { FaToggleOn, FaToggleOff, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
-
 
 const TodoItem = ({ todo, index }) => {
   const dispatch = useDispatch();
@@ -29,25 +22,22 @@ const TodoItem = ({ todo, index }) => {
     setEditedText(e.target.value);
   };
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleString(); // Format date and time
+  };
+
   return (
     <li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 py-2 gap-4">
       <div className="flex items-center">
         <span className="mr-4 text-gray-500 dark:text-white">
           {index + 1}.
         </span>
-        {isEditing ? (
-          <input
-            type="text"
-            value={editedText}
-            onChange={handleChange}
-            autoFocus
-            className="mr-4 focus:outline-none focus:border-blue-500 border-b border-transparent dark:bg-slate-700 dark:text-white"
-          />
-        ) : (
+        <div className="flex flex-col"> {/* Wrap text and date in a div for styling */}
           <span className={`mr-4 ${todo.completed ? 'line-through text-gray-500' : 'dark:text-white'}`}>
             {todo.text}
           </span>
-        )}
+          <span className="text-xs text-gray-400">{formatDate(todo.createdAt)}</span> {/* Display creation date */}
+        </div>
       </div>
       <div className='space-x-3 ml-8'>
         <button
@@ -86,7 +76,6 @@ const TodoItem = ({ todo, index }) => {
         )}
       </div>
     </li>
-   
   );
 };
 
