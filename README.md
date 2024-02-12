@@ -16,7 +16,7 @@ Welcome to the React Manager App! This application helps you manage tasks and pr
 
 ## Demo
 
-Check out the live demo of the CypherX Kanban Board-"[https://cypher-x-task.vercel.app/](https://react-task-manager-rose.vercel.app/)"
+Check out the live demo of the Task App-"[https://react-task-manager-rose.vercel.app/](https://react-task-manager-rose.vercel.app/)"
 
 ## Getting Started
 
