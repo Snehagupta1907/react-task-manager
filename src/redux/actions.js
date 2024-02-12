@@ -50,9 +50,15 @@ export const reorderTodos = (startIndex, endIndex) => ({
   payload: { startIndex, endIndex },
 });
 
-export const editTodo = (index, text) => ({
-  type: EDIT_TODO,
-  payload: { index, text },
-});
+export const editTodo = (index, newText) => {
+  return {
+    type: EDIT_TODO,
+    payload: {
+      index,
+      text: newText
+    }
+  };
+};
+
 
 
